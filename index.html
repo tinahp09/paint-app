@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drawing Paint App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="toolbar">
+      <input type="color" id="color-picker" title="Pick Color" />
+      <input
+        type="range"
+        id="brush-size"
+        min="1"
+        max="50"
+        value="5"
+        title="Brush Size"
+      />
+      <button id="eraser">Eraser</button>
+      <button id="clear">Clear</button>
+      <button id="undo">Undo</button>
+      <button id="redo">Redo</button>
+      <button id="download">Download</button>
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <script src="script.js"></script>
+  </body>
+</html>
