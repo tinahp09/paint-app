@@ -58,7 +58,9 @@ canvas.addEventListener('mousemove', draw)
 
 eraserBtn.addEventListener('click', () => {
   isEraser = !isEraser
-  eraserBtn.textContent = isEraser ? 'Draw' : 'Eraser'
+  eraserBtn.innerHTML = `<i class="${
+    isEraser ? 'fas fa-pencil-alt' : 'fas fa-eraser'
+  }"></i>`
 })
 
 clearBtn.addEventListener('click', () => {
@@ -82,11 +84,15 @@ undoBtn.addEventListener('click', () => {
   if (history.length > 0) {
     redoHistory.push(history.pop())
     let imgData = history[history.length - 1]
-    let img = new Image()
-    img.src = imgData
-    img.onload = () => {
+    if (imgData) {
+      let img = new Image()
+      img.src = imgData
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      }
+    } else {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
     }
   }
 })
